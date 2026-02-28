@@ -5,6 +5,8 @@ import {
   Building2, HeartHandshake, Droplet, ArrowRight, Info
 } from 'lucide-react';
 
+const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23e2e8f0'/%3E%3Cpath d='M389 392l111-133 112 133 151-181 248 306H389z' fill='%23cbd5e1'/%3E%3Ccircle cx='430' cy='216' r='44' fill='%23cbd5e1'/%3E%3Cpath d='M520 486h360' stroke='%2394a3b8' stroke-width='24' stroke-linecap='round'/%3E%3C/svg%3E";
+
 // Types
 type CampaignStatus = 'Upcoming' | 'Ongoing' | 'Completed';
 type CampaignType = 'Blood Drive' | 'Awareness' | 'Emergency Camp';
