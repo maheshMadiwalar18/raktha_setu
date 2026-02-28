@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Search, Map, List, Filter, Phone, MapPin, Droplet, Star, CheckCircle, Clock, XCircle, X } from 'lucide-react';
 import BloodMap from './BloodMap';
 
+ const FALLBACK_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='48' fill='%23e2e8f0'/%3E%3Cpath d='M48 48c8.8 0 16-7.2 16-16S56.8 16 48 16s-16 7.2-16 16 7.2 16 16 16zm0 8c-14.4 0-26 9.6-26 21.3V80h52v-2.7C74 65.6 62.4 56 48 56z' fill='%2394a3b8'/%3E%3C/svg%3E";
+
 export interface Donor {
   id: number;
   name: string;
@@ -149,7 +151,7 @@ const FindDonors: React.FC = () => {
                   </button>
                   
                   <div className="text-center mb-6">
-                      <img src={activeContact.avatar} alt={activeContact.name} className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-slate-100 object-cover" />
+                      <img src={activeContact.avatar} alt={activeContact.name} className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-slate-100 object-cover" onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }} />
                       <h3 className="text-xl font-bold text-slate-900">{activeContact.name}</h3>
                       <p className="text-slate-500 text-sm flex items-center justify-center gap-1 mt-1">
                           <MapPin className="w-3 h-3" /> {activeContact.location}
@@ -264,7 +266,7 @@ const FindDonors: React.FC = () => {
                   {/* Header */}
                   <div className="flex justify-between items-start mb-4">
                     <div className="relative">
-                      <img src={donor.avatar} alt={donor.name} className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform" />
+                      <img src={donor.avatar} alt={donor.name} className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform" onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }} />
                       <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm">
                         <div className={`w-4 h-4 rounded-full border-2 border-white ${donor.status === 'Available' ? 'bg-green-500' : donor.status === 'Busy' ? 'bg-amber-500' : 'bg-slate-400'}`}></div>
                       </div>
