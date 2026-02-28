@@ -73,8 +73,8 @@ const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => 
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-bold mb-3 uppercase tracking-wide">
                  <HeartHandshake className="w-3 h-3" /> Community Impact
               </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">Upcoming Campaigns</h2>
-              <p className="text-slate-500 max-w-2xl text-lg">Join these donation drives across India and be a part of the mission.</p>
+              <h2 className="text-3xl font-bold text-slate-900 mb-2">Upcoming camps & drives</h2>
+              <p className="text-slate-500 max-w-2xl text-lg">If you’re free, pick a camp near you and drop in.</p>
            </div>
            <button 
              onClick={() => onNavigate('campaigns')}

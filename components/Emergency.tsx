@@ -36,17 +36,17 @@ const Emergency: React.FC<EmergencyProps> = ({ onNavigate }) => {
 
       <div className="max-w-5xl mx-auto bg-red-600 rounded-3xl shadow-2xl shadow-red-500/40 p-8 md:p-12 text-center relative overflow-hidden">
         {/* Animated Rings */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-500 rounded-full opacity-30 animate-pulse-slow"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-red-500 rounded-full opacity-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-500 rounded-full opacity-20 animate-pulse-slow"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-red-500 rounded-full opacity-5 animate-pulse" style={{ animationDuration: '4s' }}></div>
 
         <div className="relative z-10">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full backdrop-blur mb-6">
             <AlertTriangle className="w-8 h-8 text-white" />
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Urgent Blood Needed?</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Need blood urgently?</h2>
           <p className="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
-            If you are in a critical situation and need blood immediately, connect with our emergency network of donors instantly.
+            If you’re in a critical situation, raise a request here. We’ll help you reach donors who match the blood group.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

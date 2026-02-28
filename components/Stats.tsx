@@ -31,11 +31,11 @@ const Stats: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-brand-700 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 to-brand-700/90"></div>
+    <section className="py-20 bg-brand-700 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-900/85 to-brand-700/85"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <h2 className="text-3xl font-bold text-white mb-12">Our Impact Together</h2>
+        <h2 className="text-3xl font-bold text-white mb-12">What we’ve done together</h2>
         
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
           <StatItem label="Total Donors" value={`${counts.donors.toLocaleString()}+`} icon={<Users />} />

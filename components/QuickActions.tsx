@@ -11,7 +11,7 @@ const ActionCard: React.FC<{
 }> = ({ title, desc, icon, colorClass, onClick }) => (
   <div 
     onClick={onClick}
-    className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 cursor-pointer overflow-hidden"
+    className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg border border-slate-100 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden"
   >
     <div className={`absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity transform scale-150 -mr-4 -mt-4`}>
         {/* Decorative large icon bg */}
@@ -42,21 +42,21 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onNavigate }) => {
         <div className="grid md:grid-cols-3 gap-8">
           <ActionCard
             title="Become a Donor"
-            desc="Register in minutes and join our hero community to save lives nearby."
+            desc="Register in minutes and help someone in your city when it matters most."
             icon={<UserPlus />}
             colorClass="text-brand-600"
             onClick={() => onNavigate('register')}
           />
           <ActionCard
             title="Request Blood"
-            desc="Urgent need? Create a request and instantly notify matching donors."
+            desc="In a hurry? Create a request and notify matching donors nearby."
             icon={<Search />}
             colorClass="text-blue-600"
             onClick={() => onNavigate('emergency')}
           />
            <ActionCard
             title="Find Nearby Donors"
-            desc="Locate verified donors and blood banks in your vicinity using our map."
+            desc="Find donors and camps near you using the map view."
             icon={<MapPin />}
             colorClass="text-emerald-600"
             onClick={() => onNavigate('find-donors')}

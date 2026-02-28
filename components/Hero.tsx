@@ -39,11 +39,11 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const [currentHeadline, setCurrentHeadline] = useState(0);
   
   const tickers = [
-    "🩸 Amit just donated blood in Delhi",
-    "🚑 Emergency Request fulfilled in Mumbai in 15 mins",
-    "🩸 New donation camp starting in Bangalore",
-    "❤️ Priya saved 3 lives today!",
-    "🏥 St. Mary's Hospital needs O+ donors urgently"
+    "Amit donated in Delhi a few minutes ago",
+    "Emergency request matched in Mumbai",
+    "New donation camp starting in Bangalore",
+    "Priya donated today — thank you!",
+    "St. Mary's Hospital needs O+ donors"
   ];
 
   useEffect(() => {
@@ -98,7 +98,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             
             <div className="opacity-0 animate-fadeInUp" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
               <p className="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Every drop counts. Join our community of lifesavers. Find nearby donation centers or request blood in emergencies with just a few clicks.
+                When you donate, you’re helping someone’s family get through a hard day. Register as a donor, find a camp near you, or raise an emergency request.
               </p>
             </div>
 
@@ -107,12 +107,6 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate('register')}
                 className="group relative flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-1 overflow-hidden"
               >
-                {/* Particles Effect on Hover */}
-                <span className="absolute bottom-0 left-[20%] w-1.5 h-1.5 bg-white/40 rounded-full opacity-0 group-hover:animate-particle transition-none" style={{ animationDelay: '0s' }}></span>
-                <span className="absolute bottom-0 left-[40%] w-2 h-2 bg-white/40 rounded-full opacity-0 group-hover:animate-particle transition-none" style={{ animationDelay: '0.2s' }}></span>
-                <span className="absolute bottom-0 left-[60%] w-1 h-1 bg-white/40 rounded-full opacity-0 group-hover:animate-particle transition-none" style={{ animationDelay: '0.4s' }}></span>
-                <span className="absolute bottom-0 left-[80%] w-1.5 h-1.5 bg-white/40 rounded-full opacity-0 group-hover:animate-particle transition-none" style={{ animationDelay: '0.1s' }}></span>
-                
                 <div className="relative z-10 flex items-center gap-2">
                    <Heart className="h-5 w-5 fill-white animate-heartbeat" />
                    Donate Blood
@@ -134,7 +128,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=100&h=100" alt="User" />
                   <div className="h-8 w-8 rounded-full ring-2 ring-white bg-slate-100 flex items-center justify-center text-xs">+2k</div>
                </div>
-               <p>Donors joined this week</p>
+               <p>People joined this week</p>
             </div>
           </div>
 
