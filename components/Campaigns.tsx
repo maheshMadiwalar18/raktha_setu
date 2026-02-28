@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Calendar, MapPin, Clock, Users, Search, Filter, 
@@ -208,6 +207,7 @@ const Campaigns: React.FC = () => {
                     src="https://images.unsplash.com/photo-1599586120429-48285b6a8a24?auto=format&fit=crop&w=800&q=80" 
                     alt="Volunteers" 
                     className="relative rounded-[2.5rem] shadow-2xl rotate-3 border-4 border-white w-full object-cover h-80 lg:h-96 hover:rotate-0 transition-all duration-500 cursor-pointer"
+                    onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }}
                  />
                  
                  {/* Floating Info Card */}
@@ -324,7 +324,7 @@ const Campaigns: React.FC = () => {
                   <div key={campaign.id} className="group bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-brand-900/5 transition-all duration-300 overflow-hidden flex flex-col h-full">
                      {/* Card Image */}
                      <div className="relative h-56 overflow-hidden">
-                        <img src={campaign.image} alt={campaign.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <img src={campaign.image} alt={campaign.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }} />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         
                         <div className="absolute top-4 left-4">
