@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, LayoutDashboard, LogIn, LogOut, User, Zap, HeartHandshake, AlertTriangle } from 'lucide-react';
 import { Page } from '../App';
 import { useAuth } from '../context/AuthContext';
+
+const FALLBACK_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='48' fill='%23e2e8f0'/%3E%3Cpath d='M48 48c8.8 0 16-7.2 16-16S56.8 16 48 16s-16 7.2-16 16 7.2 16 16 16zm0 8c-14.4 0-26 9.6-26 21.3V80h52v-2.7C74 65.6 62.4 56 48 56z' fill='%2394a3b8'/%3E%3C/svg%3E";
 
 interface NavbarProps {
   onNavigate: (page: Page) => void;
@@ -106,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                       onClick={(e) => handleNavClick(e, 'dashboard')}
                       className="flex items-center gap-2 pl-1 pr-2 py-1 rounded-full border border-slate-200 hover:border-brand-300 hover:shadow-sm transition-all bg-white"
                     >
-                       <img src={user?.avatar} alt={user?.name} className="w-8 h-8 rounded-full object-cover" />
+                       <img src={user?.avatar} alt={user?.name} className="w-8 h-8 rounded-full object-cover" onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }} />
                        <span className="font-bold text-sm text-slate-700 max-w-[100px] truncate">{user?.name}</span>
                     </button>
                     {/* Dropdown for logout */}
