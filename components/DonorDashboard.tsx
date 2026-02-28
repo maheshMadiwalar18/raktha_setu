@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
+const FALLBACK_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='48' fill='%23e2e8f0'/%3E%3Cpath d='M48 48c8.8 0 16-7.2 16-16S56.8 16 48 16s-16 7.2-16 16 7.2 16 16 16zm0 8c-14.4 0-26 9.6-26 21.3V80h52v-2.7C74 65.6 62.4 56 48 56z' fill='%2394a3b8'/%3E%3C/svg%3E";
+
 const DonorDashboard: React.FC = () => {
   const { user, updateProfile, notifications, markNotificationsAsRead } = useAuth();
   const [activeTab, setActiveTab] = useState<'requests' | 'history'>('requests');
@@ -319,6 +321,7 @@ const DonorDashboard: React.FC = () => {
                src={userData.avatar} 
                alt="Profile" 
                className="w-12 h-12 rounded-full border-2 border-brand-500 object-cover"
+               onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }}
              />
           </div>
         </div>
@@ -344,6 +347,7 @@ const DonorDashboard: React.FC = () => {
                         src={userData.avatar} 
                         alt="Profile" 
                         className="w-24 h-24 rounded-full border-4 border-slate-50 object-cover shadow-sm"
+                        onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }}
                     />
                     <label className="absolute bottom-0 right-0 bg-white text-slate-700 p-2 rounded-full cursor-pointer hover:bg-brand-50 hover:text-brand-600 transition-colors shadow-md border border-slate-200">
                         <Camera className="w-4 h-4" />
@@ -610,6 +614,7 @@ const DonorDashboard: React.FC = () => {
                             src={editFormData.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&h=100"} 
                             alt="Profile Preview" 
                             className="w-24 h-24 rounded-full object-cover border-4 border-slate-100 shadow-md"
+                            onError={(e) => { if (e.currentTarget.src !== FALLBACK_AVATAR) e.currentTarget.src = FALLBACK_AVATAR; }}
                           />
                           <label className="absolute bottom-0 right-0 bg-brand-600 text-white p-2 rounded-full cursor-pointer hover:bg-brand-700 transition-colors shadow-sm">
                             <Camera className="w-4 h-4" />
