@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, MapPin, Clock, ArrowRight, HeartHandshake } from 'lucide-react';
 import { Page } from '../App';
 
+ const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23e2e8f0'/%3E%3Cpath d='M389 392l111-133 112 133 151-181 248 306H389z' fill='%23cbd5e1'/%3E%3Ccircle cx='430' cy='216' r='44' fill='%23cbd5e1'/%3E%3Cpath d='M520 486h360' stroke='%2394a3b8' stroke-width='24' stroke-linecap='round'/%3E%3C/svg%3E";
+
 interface FeaturedCampaignsProps {
   onNavigate: (page: Page) => void;
 }
@@ -90,7 +92,7 @@ const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => 
                     onClick={() => onNavigate('campaigns')}
                 >
                     <div className="relative h-48 overflow-hidden">
-                        <img src={campaign.image} alt={campaign.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <img src={campaign.image} alt={campaign.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }} />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60"></div>
                         
                         <div className="absolute top-4 left-4">
