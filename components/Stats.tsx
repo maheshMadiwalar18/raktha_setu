@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Users, Droplet, Heart, Activity } from 'lucide-react';
 
 const StatItem: React.FC<{ label: string; value: string; icon: React.ReactNode }> = ({ label, value, icon }) => (
@@ -12,23 +12,7 @@ const StatItem: React.FC<{ label: string; value: string; icon: React.ReactNode }
 );
 
 const Stats: React.FC = () => {
-  // Simulating loading stats for effect
-  const [counts, setCounts] = useState({ donors: 0, lives: 0, units: 0, requests: 0 });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounts(prev => {
-        if (prev.donors >= 15000) clearInterval(interval);
-        return {
-          donors: Math.min(prev.donors + 150, 15420),
-          lives: Math.min(prev.lives + 55, 4500),
-          units: Math.min(prev.units + 25, 2300),
-          requests: Math.min(prev.requests + 2, 120),
-        };
-      });
-    }, 20);
-    return () => clearInterval(interval);
-  }, []);
+  const counts = { donors: 15420, lives: 4500, units: 2300, requests: 120 };
 
   return (
     <section className="py-20 bg-brand-700 relative overflow-hidden">
