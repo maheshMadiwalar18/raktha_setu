@@ -29,7 +29,6 @@ export type Page = 'home' | 'register' | 'emergency' | 'dashboard' | 'find-donor
 
 const AppContent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [currentPage, setCurrentPage] = useState<Page>('home');
 
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
