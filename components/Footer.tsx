@@ -1,10 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Lock } from 'lucide-react';
-import { Page } from '../App';
-
-interface FooterProps {
-  onNavigate?: (page: Page) => void;
-}
+import { useNavigate } from 'react-router-dom';
 
 const RakhtSetuLogo = ({ className = "h-6 w-6" }: { className?: string }) => (
   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -13,12 +9,12 @@ const RakhtSetuLogo = ({ className = "h-6 w-6" }: { className?: string }) => (
   </svg>
 );
 
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const handleLinkClick = (e: React.MouseEvent, target: Page) => {
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
-    if (onNavigate) {
-      onNavigate(target);
-    }
+    navigate(target === 'home' ? '/' : `/${target}`);
   };
 
   return (

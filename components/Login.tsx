@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, Mail, Lock, ArrowRight, User, AlertCircle, CheckCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-
-interface LoginProps {
-  onNavigate: (page: any) => void;
-}
+import { useNavigate } from 'react-router-dom';
 
 // Simple Logo for Login
 const RakhtSetuLogo = ({ className = "h-8 w-8" }: { className?: string }) => (
@@ -14,7 +11,8 @@ const RakhtSetuLogo = ({ className = "h-8 w-8" }: { className?: string }) => (
   </svg>
 );
 
-const Login: React.FC<LoginProps> = ({ onNavigate }) => {
+const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -32,9 +30,9 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
       await login(email, password);
       // Determine where to go based on email for demo purposes
       if (email.includes('admin')) {
-        onNavigate('admin');
+        navigate('/admin');
       } else {
-        onNavigate('dashboard');
+        navigate('/dashboard');
       }
     } catch (err) {
       setError('Invalid credentials. Please try again.');
@@ -156,7 +154,7 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
               
               <div className="mt-6 text-center">
                   <button 
-                    onClick={() => onNavigate('register')} 
+                    onClick={() => navigate('/register')} 
                     className="w-full flex items-center justify-center px-4 py-3 border-2 border-slate-100 rounded-xl shadow-sm text-sm font-bold text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-200 transition-all"
                   >
                       Create an account

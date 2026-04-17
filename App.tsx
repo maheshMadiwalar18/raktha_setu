@@ -1,7 +1,5 @@
-
-
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import QuickActions from './components/QuickActions';
@@ -25,102 +23,71 @@ import About from './components/About';
 import Support from './components/Support';
 import { AuthProvider } from './context/AuthContext';
 
-export type Page = 'home' | 'register' | 'emergency' | 'dashboard' | 'find-donors' | 'campaigns' | 'admin' | 'api-docs' | 'schema' | 'login' | 'about' | 'help' | 'privacy' | 'terms' | 'cookie-policy';
+const Home = () => (
+  <>
+    <Hero />
+    <QuickActions />
+    <Stats />
+    <FeaturedCampaigns />
+    <WhyDonate />
+    <HowItWorks />
+    <Emergency />
+    <Testimonials />
+  </>
+);
 
-const AppContent: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+const AppLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
+      <Navbar />
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-  const navigateTo = (page: Page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const AppRoutes = () => {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
 
-  const renderContent = () => {
-    switch (currentPage) {
-      case 'register':
-        return <DonorRegister onNavigate={navigateTo} />;
-      case 'login':
-        return <Login onNavigate={navigateTo} />;
-      case 'about':
-        return <About />;
-      case 'emergency':
-        return <EmergencyRequest />;
-      case 'dashboard':
-        return <DonorDashboard />;
-      case 'find-donors':
-        return <FindDonors />;
-      case 'campaigns':
-        return <Campaigns />;
-      case 'admin':
-        return <AdminDashboard />;
-      case 'api-docs':
-        return <ApiDocs />;
-      case 'schema':
-        return <DatabaseSchema />;
-      case 'help':
-      case 'privacy':
-      case 'terms':
-      case 'cookie-policy':
-        return <Support page={currentPage} />;
-      case 'home':
-      default:
-        return (
-          <>
-            <Hero onNavigate={navigateTo} />
-            <QuickActions onNavigate={navigateTo} />
-            <Stats />
-            <FeaturedCampaigns onNavigate={navigateTo} />
-            <WhyDonate />
-            <HowItWorks />
-            <Emergency onNavigate={navigateTo} />
-            <Testimonials />
-          </>
-        );
-    }
-  };
-
-
-
-  // Admin dashboard has its own layout
-  if (currentPage === 'admin') {
+  if (isAdmin) {
     return (
-        <AdminDashboard />
-    );
-  }
-  
-  // Pages that share similar full-page layout structure with nav
-  const fullPageViews = [
-    'api-docs', 'schema', 'login', 'about', 'register', 'emergency', 
-    'dashboard', 'find-donors', 'campaigns', 'help', 'privacy', 'terms', 'cookie-policy'
-  ];
-
-  if (fullPageViews.includes(currentPage)) {
-    return (
-        <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
-             <Navbar onNavigate={navigateTo} currentPage={currentPage} />
-             {renderContent()}
-             <Footer onNavigate={navigateTo} />
-        </div>
+      <Routes>
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
-      <Navbar onNavigate={navigateTo} currentPage={currentPage} />
-      
-      <main>
-        {renderContent()}
-      </main>
-      
-      <Footer onNavigate={navigateTo} />
-    </div>
+    <AppLayout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<DonorRegister />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/emergency" element={<EmergencyRequest />} />
+        <Route path="/dashboard" element={<DonorDashboard />} />
+        <Route path="/find-donors" element={<FindDonors />} />
+        <Route path="/campaigns" element={<Campaigns />} />
+        <Route path="/api-docs" element={<ApiDocs />} />
+        <Route path="/schema" element={<DatabaseSchema />} />
+        <Route path="/help" element={<Support page="help" />} />
+        <Route path="/privacy" element={<Support page="privacy" />} />
+        <Route path="/terms" element={<Support page="terms" />} />
+        <Route path="/cookie-policy" element={<Support page="cookie-policy" />} />
+      </Routes>
+    </AppLayout>
   );
 };
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <AppContent />
+      <Router>
+        <AppRoutes />
+      </Router>
     </AuthProvider>
   );
 };

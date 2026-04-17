@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, LayoutDashboard, LogIn, LogOut, User, Zap, HeartHandshake, AlertTriangle } from 'lucide-react';
-import { Page } from '../App';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const FALLBACK_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='48' fill='%23e2e8f0'/%3E%3Cpath d='M48 48c8.8 0 16-7.2 16-16S56.8 16 48 16s-16 7.2-16 16 7.2 16 16 16zm0 8c-14.4 0-26 9.6-26 21.3V80h52v-2.7C74 65.6 62.4 56 48 56z' fill='%2394a3b8'/%3E%3C/svg%3E";
 
-interface NavbarProps {
-  onNavigate: (page: Page) => void;
-  currentPage: Page;
-}
+interface NavbarProps {}
 
 // Custom Logo Component: Blood Drop forming a Bridge
 const RakhtSetuLogo = ({ className = "h-8 w-8" }: { className?: string }) => (
@@ -18,10 +15,13 @@ const RakhtSetuLogo = ({ className = "h-8 w-8" }: { className?: string }) => (
   </svg>
 );
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const [isKannada, setIsKannada] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPage = location.pathname;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,8 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     setIsOpen(false);
     
     if (target.startsWith('#')) {
-      if (currentPage !== 'home') {
-        onNavigate('home');
+      if (currentPage !== '/') {
+        navigate('/');
         setTimeout(() => {
           const element = document.querySelector(target);
           element?.scrollIntoView({ behavior: 'smooth' });
@@ -46,14 +46,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
          element?.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-       // @ts-ignore
-       onNavigate(target as Page);
+       navigate(target === 'home' ? '/' : `/${target}`);
     }
   };
 
   const handleLogout = () => {
     logout();
-    onNavigate('home');
+    navigate('/');
     setIsOpen(false);
   };
 

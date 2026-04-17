@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserPlus, Search, MapPin, ArrowRight } from 'lucide-react';
-import { Page } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 const ActionCard: React.FC<{
   title: string;
@@ -31,11 +31,8 @@ const ActionCard: React.FC<{
   </div>
 );
 
-interface QuickActionsProps {
-  onNavigate: (page: Page) => void;
-}
-
-const QuickActions: React.FC<QuickActionsProps> = ({ onNavigate }) => {
+const QuickActions: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-16 -mt-10 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,21 +42,21 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onNavigate }) => {
             desc="Register in minutes and help someone in your city when it matters most."
             icon={<UserPlus />}
             colorClass="text-brand-600"
-            onClick={() => onNavigate('register')}
+            onClick={() => navigate('/register')}
           />
           <ActionCard
             title="Request Blood"
             desc="In a hurry? Create a request and notify matching donors nearby."
             icon={<Search />}
             colorClass="text-blue-600"
-            onClick={() => onNavigate('emergency')}
+            onClick={() => navigate('/emergency')}
           />
            <ActionCard
             title="Find Nearby Donors"
             desc="Find donors and camps near you using the map view."
             icon={<MapPin />}
             colorClass="text-emerald-600"
-            onClick={() => onNavigate('find-donors')}
+            onClick={() => navigate('/find-donors')}
           />
         </div>
       </div>

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { User, Calendar, MapPin, Phone, Activity, CheckCircle, Droplet, Heart, Mail, Lock, AlertCircle, Camera } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { Page } from '../App';
+import { useNavigate } from 'react-router-dom';
 
-interface DonorRegisterProps {
-  onNavigate?: (page: Page) => void;
-}
-
-const DonorRegister: React.FC<DonorRegisterProps> = ({ onNavigate }) => {
+const DonorRegister: React.FC = () => {
   const { register } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -65,10 +62,7 @@ const DonorRegister: React.FC<DonorRegisterProps> = ({ onNavigate }) => {
     try {
         await register(formData);
         // Successful registration will trigger the global email simulation
-        
-        if (onNavigate) {
-            onNavigate('dashboard');
-        }
+        navigate('/dashboard');
     } catch (err: any) {
         setError(err.message || 'Registration failed. Please try again.');
     } finally {

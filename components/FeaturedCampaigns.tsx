@@ -1,15 +1,11 @@
-
 import React, { useEffect, useState } from 'react';
 import { Calendar, MapPin, Clock, ArrowRight, HeartHandshake } from 'lucide-react';
-import { Page } from '../App';
+import { useNavigate } from 'react-router-dom';
 
  const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23e2e8f0'/%3E%3Cpath d='M389 392l111-133 112 133 151-181 248 306H389z' fill='%23cbd5e1'/%3E%3Ccircle cx='430' cy='216' r='44' fill='%23cbd5e1'/%3E%3Cpath d='M520 486h360' stroke='%2394a3b8' stroke-width='24' stroke-linecap='round'/%3E%3C/svg%3E";
 
-interface FeaturedCampaignsProps {
-  onNavigate: (page: Page) => void;
-}
-
-const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => {
+const FeaturedCampaigns: React.FC = () => {
+  const navigate = useNavigate();
   const [campaigns, setCampaigns] = useState<any[]>([]);
 
   useEffect(() => {
@@ -77,7 +73,7 @@ const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => 
               <p className="text-slate-500 max-w-2xl text-lg">If you’re free, pick a camp near you and drop in.</p>
            </div>
            <button 
-             onClick={() => onNavigate('campaigns')}
+             onClick={() => navigate('/campaigns')}
              className="hidden md:flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 transition-colors bg-brand-50 px-5 py-2.5 rounded-xl hover:bg-brand-100"
            >
              View All Campaigns <ArrowRight className="w-4 h-4" />
@@ -89,7 +85,7 @@ const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => 
                 <div 
                     key={campaign.id} 
                     className="group rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-900/5 transition-all cursor-pointer flex flex-col h-full bg-white" 
-                    onClick={() => onNavigate('campaigns')}
+                    onClick={() => navigate('/campaigns')}
                 >
                     <div className="relative h-48 overflow-hidden">
                         <img src={campaign.image} alt={campaign.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }} />
@@ -135,7 +131,7 @@ const FeaturedCampaigns: React.FC<FeaturedCampaignsProps> = ({ onNavigate }) => 
 
         <div className="mt-8 text-center md:hidden">
             <button 
-             onClick={() => onNavigate('campaigns')}
+             onClick={() => navigate('/campaigns')}
              className="w-full inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-700 font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors"
            >
              View All Campaigns <ArrowRight className="w-4 h-4" />

@@ -1,12 +1,9 @@
 import React from 'react';
 import { Heart, Droplet } from 'lucide-react';
-import { Page } from '../App';
+import { useNavigate } from 'react-router-dom';
 
-interface HeroProps {
-  onNavigate: (page: Page) => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+const Hero: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -33,14 +30,14 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button 
-                onClick={() => onNavigate('register')}
+                onClick={() => navigate('/register')}
                 className="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 rounded-lg font-semibold transition-colors"
               >
                 <Heart className="h-5 w-5" />
                 Register as Donor
               </button>
               <button 
-                onClick={() => onNavigate('emergency')}
+                onClick={() => navigate('/emergency')}
                 className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-3.5 rounded-lg font-semibold transition-colors"
               >
                 Request Blood

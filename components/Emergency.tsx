@@ -1,11 +1,8 @@
 import { AlertTriangle, PhoneCall } from 'lucide-react';
-import { Page } from '../App';
+import { useNavigate } from 'react-router-dom';
 
-interface EmergencyProps {
-  onNavigate?: (page: Page) => void;
-}
-
-const Emergency: React.FC<EmergencyProps> = ({ onNavigate }) => {
+const Emergency: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section id="emergency" className="py-12 px-4 relative">
 
@@ -25,7 +22,7 @@ const Emergency: React.FC<EmergencyProps> = ({ onNavigate }) => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => onNavigate && onNavigate('emergency')}
+              onClick={() => navigate('/emergency')}
               className="bg-white text-red-600 hover:bg-red-50 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform flex items-center justify-center gap-2"
             >
               Raise Emergency Request
