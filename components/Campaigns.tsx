@@ -206,7 +206,7 @@ const Campaigns: React.FC = () => {
               <div className="flex-1 relative w-full max-w-lg animate-fadeInRight" style={{animationDelay: '0.3s'}}>
                  <div className="absolute inset-0 bg-brand-600 rounded-[3rem] rotate-6 opacity-5 transform scale-90"></div>
                  <img 
-                    src="https://images.unsplash.com/photo-1599586120429-48285b6a8a24?auto=format&fit=crop&w=800&q=80" 
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" 
                     alt="Volunteers" 
                     className="relative rounded-[2.5rem] shadow-2xl rotate-3 border-4 border-white w-full object-cover h-80 lg:h-96 hover:rotate-0 transition-all duration-500 cursor-pointer"
                     onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }}
