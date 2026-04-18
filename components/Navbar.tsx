@@ -79,24 +79,23 @@ const Navbar: React.FC<NavbarProps> = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <a href="#" onClick={(e) => handleNavClick(e, 'home')} className={`font-medium transition-colors ${currentPage === 'home' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Home</a>
-            <a href="#" onClick={(e) => handleNavClick(e, 'find-donors')} className={`font-medium transition-colors ${currentPage === 'find-donors' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Find Donors</a>
-            <a href="#" onClick={(e) => handleNavClick(e, 'campaigns')} className={`font-medium transition-colors ${currentPage === 'campaigns' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Campaigns</a>
-            <a href="#" onClick={(e) => handleNavClick(e, 'emergency')} className={`font-medium transition-colors flex items-center gap-1 ${currentPage === 'emergency' ? 'text-red-600' : 'text-red-500 hover:text-red-700'}`}>
+            <Link to="/" className={`font-medium transition-colors ${currentPage === '/' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Home</Link>
+            <Link to="/find-donors" className={`font-medium transition-colors ${currentPage === '/find-donors' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Find Donors</Link>
+            <Link to="/campaigns" className={`font-medium transition-colors ${currentPage === '/campaigns' ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600'}`}>Campaigns</Link>
+            <Link to="/emergency" className={`font-medium transition-colors flex items-center gap-1 ${currentPage === '/emergency' ? 'text-red-600' : 'text-red-500 hover:text-red-700'}`}>
                Emergency Request
-            </a>
+            </Link>
             <a href="#why-donate" onClick={(e) => handleNavClick(e, '#why-donate')} className="font-medium text-slate-600 hover:text-brand-600 transition-colors">Why Donate</a>
             
             {isAuthenticated ? (
                <div className="flex items-center gap-4 ml-2">
                  {user?.role === 'admin' && (
-                    <a 
-                      href="#" 
-                      onClick={(e) => handleNavClick(e, 'admin')} 
-                      className={`flex items-center gap-1.5 font-bold px-3 py-1.5 rounded-lg transition-colors ${currentPage === 'admin' ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-50'}`}
+                    <Link 
+                      to="/admin" 
+                      className={`flex items-center gap-1.5 font-bold px-3 py-1.5 rounded-lg transition-colors ${currentPage.startsWith('/admin') ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-50'}`}
                     >
                       <LayoutDashboard className="w-4 h-4" /> Admin
-                    </a>
+                    </Link>
                  )}
                  <div className="relative group">
                     <button 
