@@ -110,7 +110,7 @@ const WhyDonate: React.FC = () => {
             <div className="relative">
                 <div className="absolute inset-0 bg-brand-600 rounded-3xl rotate-3 opacity-10"></div>
                 <img 
-                src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=800&q=80" 
                 alt="Happy Donor" 
                 className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square hover:grayscale-0 transition-all duration-700"
                 />
