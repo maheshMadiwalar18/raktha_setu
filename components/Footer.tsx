@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Lock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const RakhtSetuLogo = ({ className = "h-6 w-6" }: { className?: string }) => (
   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -10,13 +10,6 @@ const RakhtSetuLogo = ({ className = "h-6 w-6" }: { className?: string }) => (
 );
 
 const Footer: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleLinkClick = (e: React.MouseEvent, target: string) => {
-    e.preventDefault();
-    navigate(target === 'home' ? '/' : `/${target}`);
-  };
-
   return (
     <footer className="bg-slate-900 text-slate-300 pt-8 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,11 +43,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold text-sm mb-3">Quick Links</h4>
             <ul className="space-y-1.5 text-xs">
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-brand-500 transition-colors">Home</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-500 transition-colors">About Us</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'register')} className="hover:text-brand-500 transition-colors">Donate Blood</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'emergency')} className="hover:text-brand-500 transition-colors">Emergency Request</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'find-donors')} className="hover:text-brand-500 transition-colors">Find Donors</a></li>
+              <li><Link to="/" className="hover:text-brand-500 transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-500 transition-colors">About Us</Link></li>
+              <li><Link to="/register" className="hover:text-brand-500 transition-colors">Donate Blood</Link></li>
+              <li><Link to="/emergency" className="hover:text-brand-500 transition-colors">Emergency Request</Link></li>
+              <li><Link to="/find-donors" className="hover:text-brand-500 transition-colors">Find Donors</Link></li>
             </ul>
           </div>
 
@@ -62,10 +55,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold text-sm mb-3">Support</h4>
             <ul className="space-y-1.5 text-xs">
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'help')} className="hover:text-brand-500 transition-colors">Help Center</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-brand-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'terms')} className="hover:text-brand-500 transition-colors">Terms of Service</a></li>
-              <li><a href="#" onClick={(e) => handleLinkClick(e, 'cookie-policy')} className="hover:text-brand-500 transition-colors">Cookie Policy</a></li>
+              <li><Link to="/help" className="hover:text-brand-500 transition-colors">Help Center</Link></li>
+              <li><Link to="/privacy" className="hover:text-brand-500 transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-brand-500 transition-colors">Terms of Service</Link></li>
+              <li><Link to="/cookie-policy" className="hover:text-brand-500 transition-colors">Cookie Policy</Link></li>
             </ul>
           </div>
 
@@ -98,12 +91,12 @@ const Footer: React.FC = () => {
             </span>
           </p>
           <div className="flex gap-6">
-            <button 
-              onClick={(e) => handleLinkClick(e, 'admin')}
+            <Link 
+              to="/admin"
               className="flex items-center gap-2 hover:text-brand-500 transition-colors"
             >
               <Lock className="w-3 h-3" /> Admin Access
-            </button>
+            </Link>
           </div>
         </div>
       </div>
