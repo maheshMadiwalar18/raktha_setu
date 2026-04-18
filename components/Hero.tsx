@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           {/* Simple Image Hero */}
           <div className="relative hidden lg:block rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80" 
+              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80" 
               alt="Blood Donation" 
               className="w-full h-full object-cover"
             />
