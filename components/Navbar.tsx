@@ -112,7 +112,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     {/* Dropdown for logout */}
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
                        <div className="p-1">
-                          <button onClick={(e) => { e.preventDefault(); onNavigate('dashboard'); }} className="flex items-center gap-2 w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg">
+                          <button onClick={(e) => { e.preventDefault(); handleNavClick(e as any, 'dashboard'); }} className="flex items-center gap-2 w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg">
                              <User className="w-4 h-4" /> Dashboard
                           </button>
                           <button onClick={handleLogout} className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
