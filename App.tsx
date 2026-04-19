@@ -29,6 +29,7 @@ const Home = () => (
     <QuickActions />
     <Stats />
     <FeaturedCampaigns />
+    <BloodCompatibility />
     <WhyDonate />
     <HowItWorks />
     <Emergency />
