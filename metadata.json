@@ -1,7 +1,0 @@
-{
-  "name": "RakhtSetu – Blood Donation Platform",
-  "description": "RakhtSetu bridges the gap between donors and patients. A modern blood donation platform connecting lives.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
