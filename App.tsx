@@ -15,6 +15,7 @@ import DonorDashboard from './components/DonorDashboard';
 import FindDonors from './components/FindDonors';
 import Campaigns from './components/Campaigns';
 import FeaturedCampaigns from './components/FeaturedCampaigns';
+import BloodCompatibility from './components/BloodCompatibility';
 import AdminDashboard from './components/AdminDashboard';
 import ApiDocs from './components/ApiDocs';
 import DatabaseSchema from './components/DatabaseSchema';
