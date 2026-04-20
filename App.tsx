@@ -6,6 +6,7 @@ import QuickActions from './components/QuickActions';
 import Stats from './components/Stats';
 import WhyDonate from './components/WhyDonate';
 import HowItWorks from './components/HowItWorks';
+import Quotes from './components/Quotes';
 import Emergency from './components/Emergency';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
@@ -33,6 +34,7 @@ const Home = () => (
     <BloodCompatibility />
     <WhyDonate />
     <HowItWorks />
+    <Quotes />
     <Emergency />
     <Testimonials />
   </>
