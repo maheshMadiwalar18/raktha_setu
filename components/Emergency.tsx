@@ -1,3 +1,4 @@
+import React from 'react';
 import { AlertTriangle, PhoneCall } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
