@@ -49,7 +49,7 @@ RakhtSetu, meaning **"Blood Bridge"**, is a full-stack, responsive blood donatio
 ### Prerequisites
 
 - **Node.js** (v18+)
-- **MongoDB** (Running locally on `27017` or a MongoDB Atlas URI)
+- **MongoDB** (Running locally on `27017` or a MongoDB Atlas URI
 
 ### 1. Setting up the Backend
 
