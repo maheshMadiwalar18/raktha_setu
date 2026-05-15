@@ -6,7 +6,7 @@ RakhtSetu, meaning **"Blood Bridge"**, is a full-stack, responsive blood donatio
 
 ## 🌟 Key Features
 
-- **Donor Registration & Authentication**: Secure JWT-based authentication system with dedicated profiles for Donors, Hospitals, and Admins.
+- **Donor Registration & Authentication**: Secure JWT-based authentication system with dedicated profiles for Donors, Hospitals, and Admins...
 - **Interactive Routing**: Fast, multi-page routing via `react-router-dom` (v7) for easy navigation.
 - **Emergency Needs Dashboard**: Specialized real-time emergency dashboard to list immediate blood requests.
 - **Smart Donor Matching**: Geographic and blood-type compatibility checks to find the correct donor fast.
